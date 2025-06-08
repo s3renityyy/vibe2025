@@ -60,7 +60,26 @@
         location.reload();
       }
 
-      async function editItem(id) {}
+      async function deleteItem(id) {
+        await fetch("/deleteItem", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id }),
+        });
+        location.reload();
+      }
+
+      async function editItem(id) {
+        const newText = prompt("Edit item text:");
+        if (newText !== null) {
+          await fetch("/editItem", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id, text: newText }),
+          });
+          location.reload();
+        }
+      }
     </script>
   </body>
 </html>
