@@ -50,13 +50,12 @@
     </div>
 
     <script>
-      async function addItem() {}
-
-      async function deleteItem(id) {
-        await fetch("/deleteItem", {
+      async function addItem() {
+        const text = document.getElementById("newItem").value;
+        await fetch("/addItem", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id }),
+          body: JSON.stringify({ text }),
         });
         location.reload();
       }
